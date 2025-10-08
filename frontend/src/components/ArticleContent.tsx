@@ -5,7 +5,7 @@ import remarkGfm from "remark-gfm";
 import { motion } from "framer-motion";
 import { ComponentPropsWithoutRef } from "react";
 import { convertContentToText, StrapiContent } from "@/lib/strapi";
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { Prism as SyntaxHighlighter, SyntaxHighlighterProps } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Check, Copy } from "lucide-react";
 import { useState } from "react";
@@ -45,7 +45,7 @@ function CodeBlock({ inline, className, children, ...props }: ComponentPropsWith
           )}
         </button>
         <SyntaxHighlighter
-          style={vscDarkPlus as any}
+          style={vscDarkPlus as SyntaxHighlighterProps['style']}
           language={match[1]}
           PreTag="div"
           customStyle={{
