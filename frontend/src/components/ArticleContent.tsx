@@ -5,8 +5,12 @@ import remarkGfm from "remark-gfm";
 import { motion } from "framer-motion";
 import { ComponentPropsWithoutRef } from "react";
 import { convertContentToText, StrapiContent } from "@/lib/strapi";
-import { Prism as SyntaxHighlighter, SyntaxHighlighterProps } from 'react-syntax-highlighter';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+// Type assertion for vscDarkPlus to avoid SyntaxHighlighter type conflicts
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const syntaxStyle = vscDarkPlus as any;
 import { Check, Copy } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
@@ -45,7 +49,7 @@ function CodeBlock({ inline, className, children, ...props }: ComponentPropsWith
           )}
         </button>
         <SyntaxHighlighter
-          style={vscDarkPlus as SyntaxHighlighterProps['style']}
+          style={syntaxStyle}
           language={match[1]}
           PreTag="div"
           customStyle={{
