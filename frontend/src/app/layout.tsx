@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import { Noto_Sans } from "next/font/google";
 import "./globals.css";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 
 const notoSans = Noto_Sans({
   weight: ["400", "600", "700"],
   subsets: ["latin"],
   variable: "--font-noto-sans",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -18,7 +21,19 @@ export const metadata: Metadata = {
     description: "Tecnología e Innovación",
     type: "website",
     locale: "es_ES",
+    siteName: "ArkadiaLabs",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "ArkadiaLabs Blog",
+    description: "Tecnología e Innovación",
+  },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({
@@ -29,7 +44,9 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body className={`${notoSans.variable} antialiased`}>
-        {children}
+        <Header />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
       </body>
     </html>
   );

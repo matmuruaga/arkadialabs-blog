@@ -1,6 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
+/* Tailwind v4 Theme Configuration */
+@theme {
+  /* Font families */
+  --font-sans: 'Noto Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  /* Custom color definitions for Tailwind utilities */
+  --color-site-accent-blue: var(--site-accent-blue);
+  --color-site-accent-purple: var(--site-accent-purple);
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  /* Border radius values */
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-full: 9999px;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -118,6 +154,25 @@
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: var(--site-accent-purple);
+  }
+}
+
+/* Force override for rounded-full utility - Tailwind v4 compatibility fix */
+@layer components {
+  .rounded-full {
+    border-radius: 9999px !important;
+  }
+
+  .font-bold {
+    font-weight: 700 !important;
+  }
+
+  .uppercase {
+    text-transform: uppercase !important;
+  }
+
+  .tracking-wide {
+    letter-spacing: 0.025em !important;
   }
 }
 
